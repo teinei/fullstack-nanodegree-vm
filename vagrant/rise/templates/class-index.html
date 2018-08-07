@@ -1,0 +1,47 @@
+<html>
+	<head></head>
+	<body>
+		<div class = 'pane'>
+			<h1>Classes</h1>
+			
+			<a href="{{ url_for('newClass') }}" > 
+				<p>Create a New Class</p>
+			</a>
+			<a href=" {{url_for('showAll') }} ">
+				<p>back</p>
+			</a>
+			<p>
+				
+			</p>
+			<table border="1">
+				<tr>
+					<td>class ID</td><td>class stage</td><td>class name</td><td>Main Teacher</td><td>Assist Teacher</td><td>start date</td><td>open1</td><td>open2</td><td>open3</td><td>graduate date</td><td></td><td></td>
+				</tr>
+				{% for htmlClass in htmlClasses %}	
+				<tr>
+					<td>{{htmlClass.id}}</td>
+					<td>{{htmlClass.class_stage}}</td>
+					<td>{{htmlClass.class_name}}</td>
+					<td>{{htmlClass.main_teacher}}</td>
+					<td>{{htmlClass.teaching_assistant}}</td>
+					<td>{{htmlClass.start_date}}</td>
+					<td>{{open1}}</td>
+					<td>{{open2}}</td>
+					<td>{{open3}}</td>
+					<td>{{htmlClass.graduate_date.date()}}</td>
+					<td>
+						<a href = "{{url_for('editClass',class_id = htmlClass.id)}}">
+							Edit Class
+						</a>
+					</td>
+					<td>
+						<a href = "{{url_for('deleteClass',class_id = htmlClass.id)}}">
+							Delete Class
+						</a>
+					</td>
+				</tr>		
+				{% endfor %}
+			</table>	
+		</div>
+	</body>
+</html>
