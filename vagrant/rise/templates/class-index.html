@@ -1,18 +1,28 @@
 <html>
+	<style>
+		.inline{
+			display:inline-block;
+		}
+		a{
+			display:inline-block;
+		}
+	</style>
 	<head></head>
 	<body>
 		<div class = 'pane'>
 			<h1>Classes</h1>
 			
-			<a href="{{ url_for('newClass') }}" > 
+			<a href="{{ url_for('newClass') }}" class="inline"> 
 				<p>Create a New Class</p>
 			</a>
+			&nbsp;|&nbsp;
 			<a href=" {{url_for('showAll') }} ">
-				<p>back</p>
+				<p> Back</p>
 			</a>
-			<p>
-				
-			</p>
+			&nbsp;|&nbsp;
+			<a href=" {{ url_for('readCSV') }} ">
+				<p>Read CSV</p>
+			</a>
 			<table border="1">
 				<tr>
 					<td>class ID</td><td>class stage</td><td>class name</td><td>Main Teacher</td><td>Assist Teacher</td><td>start date</td><td>open1</td><td>open2</td><td>open3</td><td>graduate date</td><td></td><td></td>
@@ -24,19 +34,19 @@
 					<td>{{htmlClass.class_name}}</td>
 					<td>{{htmlClass.main_teacher}}</td>
 					<td>{{htmlClass.teaching_assistant}}</td>
-					<td>{{htmlClass.start_date}}</td>
-					<td>{{open1}}</td>
-					<td>{{open2}}</td>
-					<td>{{open3}}</td>
+					<td>{{htmlClass.start_date.date()}}</td>
+					<td>{{htmlClass.open1.date()}}</td>
+					<td>{{htmlClass.open2.date()}}</td>
+					<td>{{htmlClass.open3.date()}}</td>
 					<td>{{htmlClass.graduate_date.date()}}</td>
 					<td>
 						<a href = "{{url_for('editClass',class_id = htmlClass.id)}}">
-							Edit Class
+							Edit
 						</a>
 					</td>
 					<td>
 						<a href = "{{url_for('deleteClass',class_id = htmlClass.id)}}">
-							Delete Class
+							Delete
 						</a>
 					</td>
 				</tr>		

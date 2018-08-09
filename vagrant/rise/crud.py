@@ -2,6 +2,8 @@
 # from flask import render_template, url_for
 # url_for('functionName',arg_name=value)
 # render_template('somename.html',arg_name=value)
+import csv
+#import csv lib to read csv
 from datetime import date,datetime
 import datetime
 #
@@ -35,6 +37,11 @@ def showRiseClasses():
     return render_template('class-index.html',htmlClasses=htmlClasses)
     #
 #
+@app.route('/class/read-csv')
+def readCSV():
+    return render_template('read-csv.html')
+    #
+
 @app.route('/class/new',methods=['GET','POST'])
 @app.route('/class/new/',methods=['GET','POST'])
 def newClass():
